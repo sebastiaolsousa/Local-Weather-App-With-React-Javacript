@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import Weather from "./components/Weather";
 
-function App() {
+const App = () => {
+  const [weatherData, setWeatherData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        'https://api.openweathermap.org/data/2.5/weather?lat=-48.50444&lon=-1.45583&appid=c06c15f02eff0811952e167b212c4286'
+      );
+      setWeatherData(response.data);
+    };
+    fetchData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="local-weather-app">
+      <h1>Local Weather App</h1>
+      {weatherData ? (
+        <Weather
+          city={weatherData.name}
+          temperature={weatherData.main.temp}
+          description={weatherData.weather[0].description}
+        />
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
-}
+};
 
 export default App;
