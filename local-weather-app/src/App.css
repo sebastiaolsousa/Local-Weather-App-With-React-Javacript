@@ -1,38 +1,72 @@
-.local-weather-app{
+@charset "UTF-8";
+
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: lightslategray;
+}
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: white;
+  width: 400px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.425);
+  overflow: hidden;
+
+  transition: height .3s, width .3s;
+  transition-timing-function: ease;
+}
+
+.expand{
+  height: 280px;
+  width: 300px;
+}
+
+h1 {
+  background-color: lightblue;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h2 {
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+label, input, p, button, h2 {
+  padding: 5px;
+  margin: 5px;
+  margin-left: 8px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+input#cityNameInput {
+  width: 280px;
+}
+
+input#apiKeyInput {
+  width: 300px;
+}
+
+button#generateForecastButton {
+  width: 384px;
+}
+
+button#resetButton {
+  width: 284px;
+}
+
+.weather-result {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  align-items: center;
 }

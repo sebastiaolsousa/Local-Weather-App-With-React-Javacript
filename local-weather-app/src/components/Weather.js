@@ -15,11 +15,10 @@ const Weather = ({ city, temperature, description, weatherType, humidity, windSp
     return (
         <div>
             <h2>{city}</h2>
-            {weatherIcon}
             <p>Temperature: {Math.floor(temperature-273)} ºC</p>
             <p>Humidity: {humidity}%</p>
             <p>Wind Speed: {windSpeed} Km/H</p>
-            <p>Description: {description}</p>
+            <p>Description: {description} {weatherIcon}</p>
         </div>
     );
 };
